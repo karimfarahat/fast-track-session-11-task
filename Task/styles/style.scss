@@ -1,0 +1,211 @@
+$dark-primary: #1d2029;
+$dark-secondary: #252b43;
+$dark-third: #20222f;
+$dark-hover: #333a56;
+$dark-text: #fff;
+$dark-text-muted: #8186a4;
+
+$light-primary: #fff;
+$light-secondary: #f0f3fa;
+$light-third: #f8f9fe;
+$light-hover: #e1e3f0;
+$light-text: #000;
+$light-text-muted: #9395a1;
+
+$youtube-color: #c3032a;
+$facebook-color: #1a8ff8;
+$instagram-color: #e8668c;
+$twitter-color: #1ea2f4;
+
+@mixin themable(
+  $theme-name,
+  $primary-bg,
+  $text,
+  $item-bg,
+  $muted-text,
+  $top-bg,
+  $hover-bg
+) {
+  .#{$theme-name} {
+    position: relative;
+    .top-bg {
+      background-color: $top-bg;
+
+      height: 200px;
+      width: 100%;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    main {
+      .content-wrapper {
+        position: relative;
+        z-index: 2;
+      }
+
+      background-color: $primary-bg;
+      font-weight: 600;
+      color: $text;
+
+      .main-header {
+        padding: 10px 0px;
+        border-bottom: 1px solid #888888;
+        .main-title {
+          font-size: 25px;
+        }
+        .main-subtitle {
+          color: $muted-text;
+        }
+      }
+
+      .form-check-label {
+        color: $muted-text;
+      }
+      .form-check-input {
+        background-color: #3abea9;
+
+        &:checked {
+          background-color: #aeb2cb;
+        }
+      }
+
+      .form-switch .form-check-input {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
+      }
+
+      .item {
+        .item-border {
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          height: 5px;
+          width: 100%;
+          background-color: #fff;
+
+          &.youtube {
+            background-color: $youtube-color;
+          }
+          &.instagram {
+            background: linear-gradient(
+              90deg,
+              rgba(254, 194, 98, 1) 0%,
+              rgba(238, 133, 127, 1) 50%,
+              rgba(217, 80, 150, 1) 100%
+            );
+          }
+          &.facebook {
+            background-color: $facebook-color;
+          }
+          &.twitter {
+            background-color: $twitter-color;
+          }
+        }
+        .item-wrapper {
+          background-color: $item-bg;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          .item-social {
+            .item-social-logo {
+              width: 30px;
+              height: 30px;
+
+              .youtube {
+                color: $youtube-color;
+              }
+              .instagram {
+                background: linear-gradient(
+                  90deg,
+                  rgba(254, 194, 98, 0.6) 0%,
+                  rgba(238, 133, 127, 0.6) 50%,
+                  rgba(217, 80, 150, 0.6) 100%
+                );
+                color: $instagram-color;
+              }
+              .facebook {
+                color: $facebook-color;
+              }
+              .twitter {
+                color: $twitter-color;
+              }
+            }
+            .item-social-user {
+              color: $muted-text;
+              font-size: 12px;
+            }
+          }
+          .item-number-followers {
+            font-size: 70px;
+            font-weight: 700;
+          }
+          .followers-text {
+            color: $muted-text;
+            letter-spacing: 5.5px;
+            text-transform: uppercase;
+          }
+          .item-today {
+            color: #3abea9;
+            .today-text {
+              font-size: 14px;
+            }
+          }
+
+          &:hover {
+            background-color: $hover-bg;
+          }
+        }
+      }
+
+      .overview-items-row {
+        .overview-title {
+          padding: 10px 0px;
+
+          font-size: 25px;
+        }
+        .overview-wrapper {
+          background-color: $item-bg;
+          border-radius: 5px;
+          .overview-item-header {
+            .overview-item-header-title {
+              color: $muted-text;
+              font-size: 15px;
+            }
+          }
+          .overview-item-footer {
+            .overview-item-footer-title {
+              font-size: 40px;
+            }
+            .item-today {
+              color: #3abea9;
+              .today-text {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include themable(
+  theme-dark,
+  $dark-primary,
+  $dark-text,
+  $dark-secondary,
+  $dark-text-muted,
+  $dark-third,
+  $dark-hover
+);
+@include themable(
+  theme-light,
+  $light-primary,
+  $light-text,
+  $light-secondary,
+  $light-text-muted,
+  $light-third,
+  $light-hover
+);
